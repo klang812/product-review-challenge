@@ -1,0 +1,28 @@
+Create a command line app that will evaluate whether a list of prducts are approved by reviewers.
+
+Input
+- Reviewers
+- Product name
+- Approval
+
+Output (in alphabetical order of Product)
+- Product
+- Approval (listed separately based on whether approved or rejected)
+
+    i.e.
+    Approved
+    Product name          Approved
+
+    Denied
+    Product name          Rejected
+
+    - To be approved it needs to be 100% Approved otherwise its Denied
+
+Solution should be able to run (and if applicable, built) from the command line.  Use scripts and instructions for running application and tests.
+
+
+
+
+
+
+
