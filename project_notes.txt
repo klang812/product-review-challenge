@@ -20,9 +20,50 @@ Output (in alphabetical order of Product)
 
 Solution should be able to run (and if applicable, built) from the command line.  Use scripts and instructions for running application and tests.
 
+1.  Want a real UI
+2.  Provide help statements (-h --help)
 
 
 
+1. Load a file from the command file (sample-input.txt)
+2. Parse that file (sort by product)
 
+
+G.C., keychain - approve
+J.M., holographic t-shirt - approve
+J.M., basket of kittens - reject
+B.L., holographic t-shirt - approve
+G.C., holographic t-shirt - approve
+B.L., basket of kittens - approve
+J.M., mug - approve
+K.S., mug - reject
+G.C., basket of kittens - reject
+
+(K.S.,) (mug) (-) (reject)
+file.entry[0]        
+        file.entry[1]
+() () ()          (file.entry[-1])
+
+G.C., basket of kittens - reject
+[0]   1      2  3       -2 -1
+
+G.C., basket kittens - reject
+0       1     2      -2  -1
+
+productApproval = {}
+
+entries.each do |entry| 
+  product = ""
+  approval = entry[-1]
+  for (i=1; i<=entry.length[-3]; i++)
+    product += entry[i] + " " 
+  end
+  productApproval[product.chomp] = approval 
+
+  
+end
+puts productApproval
+
+allApprovals = [{mug=>approval}, {t-shirt=>reject}]
 
 

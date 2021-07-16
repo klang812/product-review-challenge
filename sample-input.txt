@@ -1,0 +1,9 @@
+G.C., keychain - approve
+J.M., holographic t-shirt - approve
+J.M., basket of kittens - reject
+B.L., holographic t-shirt - approve
+G.C., holographic t-shirt - approve
+B.L., basket of kittens - approve
+J.M., mug - approve
+K.S., mug - reject
+G.C., basket of kittens - reject
