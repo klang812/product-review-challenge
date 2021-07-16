@@ -7,3 +7,4 @@ B.L., basket of kittens - approve
 J.M., mug - approve
 K.S., mug - reject
 G.C., basket of kittens - reject
+K.L., basket of kittens - approve
