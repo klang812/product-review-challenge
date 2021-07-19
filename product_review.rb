@@ -9,21 +9,24 @@
 #     options[:file] = value
 #   end
 # end.parse!
+
 class ProductReviews
+
+  attr_reader :productApproval, :productApproved, :productDenied
   
   def initialize
     @productApproval = []
     @productApproved = []
     @productDenied = []
   end
-  
+
   def load_file(fileName)
     File.read(fileName).split("\n")
   end
 
   def read_file(fileName)
-    file_data = load_file(fileName)
-    file_data.each do |entry| 
+    fileData = load_file(fileName)
+    fileData.each do |entry| 
       # i.e. entry = "G.C., keychain - approve"
       dataEntry = entry.split(" ")
       # dataEntry = ["G.C.,","keychain","-","approve"]
@@ -76,5 +79,3 @@ class ProductReviews
   end
 end
 
-product_reviews = ProductReviews.new
-product_reviews.run_application(ARGV[0])
