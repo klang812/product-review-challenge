@@ -44,5 +44,13 @@ describe ProductReviews do
       end.to output("Approved\nholographic t-shirt\nkeychain\n\nDenied\nbasket of kittens\nmug\n").to_stdout
     end
   end
+
+  describe 'run application' do
+    it 'runs the application' do
+      expect do
+        productReviews.run_application("sample-input.txt")
+      end.to output("Approved\nholographic t-shirt\nkeychain\n\nDenied\nbasket of kittens\nmug\n").to_stdout
+    end
+  end
 end
 
