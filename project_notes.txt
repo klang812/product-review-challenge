@@ -50,7 +50,7 @@ G.C., basket of kittens - reject
 G.C., basket kittens - reject
 0       1     2      -2  -1
 
-productApproval = {}
+$productApproval = {}
 
 entries.each do |entry| 
   product = ""
@@ -58,11 +58,11 @@ entries.each do |entry|
   for (i=1; i<=entry.length[-3]; i++)
     product += entry[i] + " " 
   end
-  productApproval[product.chomp] = approval 
+  $productApproval[product.chomp] = approval 
 
   
 end
-puts productApproval
+puts $productApproval
 
 allApprovals = [{mug=>approval}, {t-shirt=>reject}]
 
