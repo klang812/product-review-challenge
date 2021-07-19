@@ -79,3 +79,6 @@ class ProductReviews
   end
 end
 
+# product_reviews = ProductReviews.new
+# product_reviews.run_application(ARGV[0])
+# moved to separate file (worked with no tests)
