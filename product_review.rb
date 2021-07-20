@@ -33,21 +33,33 @@ class ProductReviews
       product = ""
       approval = dataEntry[-1]
       # i.e. approval = "approve"
+      initials = dataEntry[0]
       i=1
       while i<=(dataEntry.length() -3) do
         product += dataEntry[i] + " "
         i += 1
       end
-      @productApproval.push(product.strip => approval)
+      @productApproval.push(product.strip => [approval, initials])
     end
   end
 
   def populate_approve_and_deny_lists
     @productApproval.each do |approval|
-      if (approval.values[0] === 'approve')
+      if (approval.values[0][0] === 'approve')
         @productApproved.push(approval.keys[0])
       else 
-        @productDenied.push(approval.keys[0])
+        if (@productDenied.any? {|h| h.has_key?(approval.keys[0])})
+          # {"t-shirt" => ["k.l.""]}
+          @productDenied[approval.keys[0]].push(approval.values[0][1])
+          # {"t-shirt" => ["k.l.","d.b."]}
+          # @productDenied.push(approval.keys[0] => [approval.values[0][1]])
+        else
+          # {}
+          @productDenied.push(approval.keys[0] => [approval.values[0][1]])
+          # {"mug" => ["g.k."]}
+        end
+        # {"t-shirt" => ["k.l.","d.b."]}
+        # {"mug"} => []}
         # $@productApproved.delete(approval.keys[0]) # (initial approach - if last element was in approval it would also add to approval list)
       end
     end
@@ -57,8 +69,8 @@ class ProductReviews
     # if product is not 100% approved it will be rejected (based on requirements)
     @productDenied.each do |denied|
       # denied = keychain
-      if (@productApproved.include? denied)
-        @productApproved.delete(denied)
+      if (@productApproved.include? denied.keys[0])
+        @productApproved.delete(denied.keys[0])
       end
     end
   end
@@ -68,7 +80,10 @@ class ProductReviews
     puts @productApproved.sort.uniq
     puts
     puts "Denied"
-    puts @productDenied.sort.uniq
+    # puts @productDenied.sort.uniq # + {}
+    @productDenied.sort.uniq.each do |productDeny|
+      puts productDeny.keys[0] + " (" + productDeny.values[0].join(",") + ")" 
+    end
   end
 
   def run_application(fileName)
